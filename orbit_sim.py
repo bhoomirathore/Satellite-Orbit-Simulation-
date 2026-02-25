@@ -27,8 +27,8 @@ x_positions = []
 y_positions = []
 
 Cd = 2.2
-rho = 1e-9      # very thin atmosphere at 300 km
-A = 10            # cross-sectional area (m^2)
+rho = 1e-9     # very thin atmosphere at 300 km
+A = 10          # cross-sectional area (m^2)
 
 # simulation loop 
 for step in range(steps):
@@ -36,7 +36,7 @@ for step in range(steps):
     # Distance from Earth center
     r = np.sqrt(x**2 + y**2)
     if r <= r_earth:
-        print("satellite has crashed into the earth.")
+        print(f"satellite crashed at time = {step * dt} seconds ")
         break
 
     # Compute gravity acceleration
@@ -76,7 +76,7 @@ for step in range(steps):
 plt.figure(figsize=(6,6))
 plt.plot(x_positions, y_positions)
 earth = plt.Circle((0, 0), r_earth, color='blue', alpha=0.3)
-plt.gca().add_patch(earth) # Earth at center
+plt.gca().add_patch(earth)      # Earth at center
 plt.gca().set_aspect('equal')
 plt.title("Satellite Orbit Simulation")
 plt.xlabel("x position (m)")
