@@ -1,7 +1,12 @@
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify , render_template
 from orbit_sim import simulate_orbit
 
 app = Flask(__name__)
+
+@app.route("/")
+def home():
+    return render_template("index.html")
+
 @app.route("/simulate")
 def simulate():
 
